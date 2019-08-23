@@ -9,8 +9,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    name: '',
-    score: '',
     rooms: []
   },
   mutations: {
@@ -28,12 +26,12 @@ export default new Vuex.Store({
 
   },
   actions: {
-    createRoom(context) {
+    createRoom(context, payload) {
       let playerName = localStorage.getItem('playerName')
       let playerId = localStorage.getItem('userId')
       db.collection('roomCollection')
       .add({
-        title: `${playerName}'s room`,
+        title: `${payload} room`,
         status: false,
         players: [{id: playerId, name: playerName, score: 0}]
       })
@@ -44,14 +42,13 @@ export default new Vuex.Store({
     },
 
     createUser(context, payload) {
-      db.collection('userCollection')
+      return db.collection('userCollection')
       .add({
         name: payload, 
       })
       .then(ref => {
         localStorage.setItem('userId', ref.id)
         localStorage.setItem('playerName', payload)
-        context.commit('emptyUser')
       })
     },
 

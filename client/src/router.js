@@ -16,16 +16,12 @@ export default new Router({
       component: Home
     },
     {
-      path: '/home',
-      name: 'home',
-      component: Home,
-    }, {
-      path: '/room',
+      path: '/room/:id',
       name: 'room',
       component: Room,
     },
     {
-      path: '/game',
+      path: '/game/:id',
       name: 'game',
       component: Game,
     }
