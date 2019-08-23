@@ -22,14 +22,6 @@
           >Join Room</button>
           <!-- <button class="btn m-4 p-3">Join Room</button> -->
         </div>
-        <div class="logbtn">
-          <button
-            type="button"
-            class="btn m-4 p-3"
-            data-toggle="modal"
-            data-target="#HighScore"
-          >Highscore</button>
-        </div>
       </div>
 
       <!-- <div class="d-flex flex-column justify-content-around align-items-center mt-5">
@@ -85,8 +77,9 @@
                   <div  v-for="(room, index) in rooms" :key="index" class="room-title mb-3 d-flex justify-content-between align-items-center">
                     <h3>{{room.title}}</h3>
                     <h3 class="room-id">{{room.id}}</h3>
-                    <button class="btn" 
-                    @click="join(room.id)" >Join</button>
+                    <button class="btn"
+                    data-dismiss="modal"
+                    @click="join(room.id)">Join</button>
                   </div>
                 </div>
               </div>
@@ -179,8 +172,10 @@ export default {
     },
 
     join(id) {
+      $('Lobby').modal('hide');
       this.$store.dispatch("joinRoom", id);
       this.$router.push(`/room/${id}`)
+
     },
   }
 };

@@ -38,15 +38,15 @@
                 <h1>Score</h1>
               </div>
               <div class="player-score-info d-flex justify-content-around align-items-center">
-                <h1>Aku</h1>
-                <h1>100</h1>
+                <h1>{{name}}</h1>
+                <h1>{{ score }}</h1>
               </div>
             </div>
           </div>
 
           <!-- Modal footer -->
           <div class="modal-footer d-flex justify-content-center align-items-center">
-            <button type="button" class="btn" data-dismiss="modal">Main Menu</button>
+            <button type="button" class="btn" data-dismiss="modal" @click="mainMenu">Main Menu</button>
           </div>
         </div>
       </div>
@@ -68,10 +68,15 @@ export default {
       timer: 20,
       boardStyle: {
         cursor: `url(${require("../assets/swatter.png")}),auto`
-      }
+      },
+      name: ''
     };
   },
   methods: {
+    mainMenu() {
+      this.$router.push('/')
+    },
+
     moveMosquito() {
       for (let i = 0; i < this.mosquitos.length; i++) {
         let randompx = Math.floor(Math.random() * 1000);
@@ -125,6 +130,7 @@ export default {
     randomImg(this.randomPosition);
     randomImg(this.gameInit);
     randomImg(this.moveMosquito);
+    this.name = localStorage.getItem('playerName')
   },
   watch: {
     timer(val) {

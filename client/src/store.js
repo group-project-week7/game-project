@@ -33,7 +33,7 @@ export default new Vuex.Store({
       .add({
         title: `${payload} room`,
         status: false,
-        players: [{id: playerId, name: playerName, score: 0}]
+        players: []
       })
       .then(ref => {
         console.log(ref.id)
