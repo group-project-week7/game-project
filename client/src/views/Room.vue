@@ -8,30 +8,21 @@
         <div class="body card-body text-center pt-3 d-flex justify-content-between flex-column">
           <div>
             <div class="room-info d-flex justify-content-between align-items-center">
-              <h1>Room Name : 55APSO NO BACOT</h1>
-              <h1>Room ID : 12G36$52H8C2768#gfG</h1>
+              <h1>Room Name : {{room.title}}</h1>
+              <h1>Room ID : {{room.id}} </h1>
             </div>
             <hr />
           </div>
           <div class="player-list d-flex flex-column justify-content-start">
-            <div class="player-name">
-              <h1 class="mb-5">Tasty Cyka</h1>
-            </div>
-            <div class="player-name">
-              <h1 class="mb-5">GAKGAYGAKGAUL</h1>
-            </div>
-            <div class="player-name">
-              <h1 class="mb-5">isoSpin</h1>
-            </div>
-            <div class="player-name">
-              <h1 class="mb-5">No-name</h1>
+            <div v-for="(player, i) in players" :key="i" class="player-name">
+              <h1 class="mb-5">{{player.name}}</h1>
             </div>
           </div>
           <div>
             <hr />
             <div class="d-flex justify-content-around">
               <router-link to="/game">
-                <button class="btn">Start</button>
+                <button class="btn" @click="start(room.id)">Start</button>
               </router-link>
               <router-link to="/home">
                 <button class="btn">Exit</button>
@@ -45,7 +36,34 @@
 </template>
 
 <script>
-export default {};
+import db from "../api/firebase";
+
+export default {
+  name: 'room',
+  data() {
+    return {
+      room : {},
+      players: [],
+    }
+  },
+  methods: {
+    start(id) {
+      this.$store.dispatch('startGame', id)
+    }
+  },
+  created() {
+    let roomid = this.$route.params.id
+    db.collection('roomCollection')
+    .doc(roomid)
+    .onSnapshot((doc) => {
+      this.room = {id: doc.id, ...doc.data()}
+      this.players = this.room.players
+      if (this.room.status === true) {
+        this.$router.push(`/game/${this.room.id}`)
+      }
+    })
+  }
+};
 </script>
 
 <style scoped>

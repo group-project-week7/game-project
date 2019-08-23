@@ -82,10 +82,11 @@
                     <h3>Room ID</h3>
                     <h3>Option</h3>
                   </div>
-                  <div class="room-title mb-3 d-flex justify-content-between align-items-center">
-                    <h3>55 APSO BOOK 5</h3>
-                    <h3 class="room-id">2134g2345h234bhj2b3e7</h3>
-                    <button class="btn">Join</button>
+                  <div  v-for="(room, index) in rooms" :key="index" class="room-title mb-3 d-flex justify-content-between align-items-center">
+                    <h3>{{room.title}}</h3>
+                    <h3 class="room-id">{{room.id}}</h3>
+                    <button class="btn" 
+                    @click="join(room.id)" >Join</button>
                   </div>
                 </div>
               </div>
@@ -113,14 +114,14 @@
             <div class="d-flex justify-content-center align-items-start">
               <div class="container">
                 <label>Room Name</label>
-                <input type="text" class="form-control" />
+                <input type="text" v-model="roomName" class="form-control" />
               </div>
             </div>
           </div>
 
           <!-- Modal footer -->
           <div class="modal-footer d-flex justify-content-around align-items-center">
-            <button type="button" class="btn" data-dismiss="modal">Create</button>
+            <button type="button" class="btn" data-dismiss="modal" @click="roomCreate">Create</button>
             <button type="button" class="btn" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -161,9 +162,27 @@
 
 <script>
 // @ is an alias to /src
+import { mapState } from "vuex";
 export default {
   name: "home",
-  components: {}
+  components: {},
+  computed: mapState(["rooms"]),
+  data: () => {
+    return {
+      roomName: '',
+    };
+  },
+  methods: {
+    roomCreate() {
+      this.$store.dispatch("createRoom", this.roomName)
+      this.roomName = ''
+    },
+
+    join(id) {
+      this.$store.dispatch("joinRoom", id);
+      this.$router.push(`/room/${id}`)
+    },
+  }
 };
 </script>
 
