@@ -16,6 +16,32 @@
         <button type="button" class="btn m-4 p-3" data-toggle="modal" data-target="#Lobby">Join Room</button>
         <!-- <button class="btn m-4 p-3">Join Room</button> -->
       </div>
+      <div class="logbtn">
+        <button
+          type="button"
+          class="btn m-4 p-3"
+          data-toggle="modal"
+          data-target="#HighScore"
+        >Highscore</button>
+      </div>
+      <div class="game-info text-center">
+        <h4>Develop and Created by:</h4>
+        <h4>
+          <a href="https://www.instagram.com/ifaujack/" target="blank">
+            <i class="fab fa-instagram mr-2"></i>Fauzi
+          </a>
+        </h4>
+        <h4>
+          <a href="https://www.instagram.com/nicholasbilly/" target="blank">
+            <i class="fab fa-instagram mr-2"></i>Billy
+          </a>
+        </h4>
+        <h4>
+          <a href="https://www.instagram.com/f_ardi14/" target="blank">
+            <i class="fab fa-instagram mr-2"></i>Ardi
+          </a>
+        </h4>
+      </div>
     </div>
 
     <!-- The Modal -->
@@ -81,6 +107,36 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade-scale" id="HighScore">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered mt-0 mb-0">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header d-flex justify-content-center">
+            <h1 class="modal-title">Score</h1>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="d-flex flex-column justify-content-center align-items-start">
+              <div class="player-score-table d-flex justify-content-around align-items-center">
+                <h1>Player Name</h1>
+                <h1>Score</h1>
+              </div>
+              <div class="player-score-info d-flex justify-content-around align-items-center">
+                <h1>Aku</h1>
+                <h1>100</h1>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer d-flex justify-content-center align-items-center">
+            <button type="button" class="btn" data-dismiss="modal">Main Menu</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -125,13 +181,17 @@ h1 {
   background-position-y: -3rem;
   background-position-x: 10rem;
 }
+.logbtn {
+  display: flex;
+  align-items: center;
+}
 .logbtn button {
   background-color: #de5246;
   font-family: "Bangers", cursive;
-  font-size: 70px;
+  font-size: 50px;
   color: whitesmoke;
   width: 100%;
-  border-radius: 50%;
+  border-radius: 30%;
   transition: 0.5s all;
 }
 .logbtn button:hover {
@@ -178,5 +238,37 @@ h1 {
 }
 .modal-body {
   max-height: 50vh;
+}
+.player-score-info {
+  width: 100%;
+}
+.player-score-info h1 {
+  font-size: 30px;
+  margin: 0px;
+  font-family: "Bangers", cursive;
+  color: #de5246;
+}
+.player-score-table {
+  width: 100%;
+}
+.player-score-table h1 {
+  font-size: 30px;
+  margin: 0px;
+  font-family: "Bangers", cursive;
+  color: #2a2e33;
+}
+.game-info {
+  color: #de5246;
+}
+.game-info h4 a {
+  color: whitesmoke;
+  text-decoration: none;
+  transition: 0.5s all;
+}
+.game-info h4 a:hover {
+  font-size: 25px;
+  color: whitesmoke;
+  text-decoration: none;
+  transition: 0.5s all;
 }
 </style>
