@@ -1,6 +1,6 @@
 <template>
   <div class="roomBoard d-flex justify-content-center align-items-center">
-    <div class="container">
+    <div class="room-board">
       <div class>
         <div class="title card-title d-flex justify-content-center m-0">
           <h1 class="m-0">Room</h1>
@@ -29,7 +29,14 @@
           </div>
           <div>
             <hr />
-            <button class="btn">Exit</button>
+            <div class="d-flex justify-content-around">
+              <router-link to="/game">
+                <button class="btn">Start</button>
+              </router-link>
+              <router-link to="/home">
+                <button class="btn">Exit</button>
+              </router-link>
+            </div>
           </div>
         </div>
       </div>
@@ -91,7 +98,7 @@ h3 {
   border: 0.5px solid #2a2e33;
 }
 button {
-  width: 20%;
+  width: 100%;
   font-size: 30px;
   font-family: "Bangers", cursive;
   background-color: #de5246;
@@ -106,7 +113,14 @@ button:hover {
 .player-list {
   height: 80%;
 }
-.player-name{
+.player-name {
   border-bottom: 0.5px solid #2a2e33;
+}
+.player-name h1 {
+  color: #2a2e33;
+  font-family: "Bangers", cursive;
+}
+.room-board{
+  min-width: 60vh;
 }
 </style>
