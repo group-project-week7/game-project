@@ -4,26 +4,45 @@
       <h1>Nyamuk Killer</h1>
     </div>
     <div class="main-btn d-flex flex-column justify-content-around align-items-center mt-5">
-      <div class="logbtn">
-        <button
-          type="button"
-          class="btn m-4 p-3"
-          data-toggle="modal"
-          data-target="#Create"
-        >Create room</button>
+      <div class="d-flex flex-column justify-content-around align-items-center mt-5">
+        <div class="logbtn">
+          <button
+            type="button"
+            class="btn m-4 p-3"
+            data-toggle="modal"
+            data-target="#Create"
+          >Create room</button>
+        </div>
+        <div class="logbtn">
+          <button
+            type="button"
+            class="btn m-4 p-3"
+            data-toggle="modal"
+            data-target="#Lobby"
+          >Join Room</button>
+          <!-- <button class="btn m-4 p-3">Join Room</button> -->
+        </div>
+        <div class="logbtn">
+          <button
+            type="button"
+            class="btn m-4 p-3"
+            data-toggle="modal"
+            data-target="#HighScore"
+          >Highscore</button>
+        </div>
       </div>
-      <div class="logbtn">
-        <button type="button" class="btn m-4 p-3" data-toggle="modal" data-target="#Lobby">Join Room</button>
-        <!-- <button class="btn m-4 p-3">Join Room</button> -->
-      </div>
-      <div class="logbtn">
-        <button
-          type="button"
-          class="btn m-4 p-3"
-          data-toggle="modal"
-          data-target="#HighScore"
-        >Highscore</button>
-      </div>
+
+      <!-- <div class="d-flex flex-column justify-content-around align-items-center mt-5">
+        <div class="input-name-board">
+          <form>
+            <label>Input Username</label>
+            <input type="text" class="form-control" placeholder="input username">
+          </form>
+        </div>
+      </div> -->
+
+
+
       <div class="game-info text-center">
         <h4>Develop and Created by:</h4>
         <h4>
@@ -149,6 +168,7 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Bangers&display=swap");
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
 @import url("https://fonts.googleapis.com/css?family=Bangers&display=swap");
 .fade-scale {
@@ -268,7 +288,7 @@ h1 {
 .game-info h4 a:hover {
   font-size: 25px;
   color: whitesmoke;
-  text-decoration: none;
   transition: 0.5s all;
+  font-family: "Bangers", cursive;
 }
 </style>
